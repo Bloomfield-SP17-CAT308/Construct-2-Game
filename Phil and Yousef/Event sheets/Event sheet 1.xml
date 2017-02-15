@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <comment>Use the down arrow to allow the player to deliberately drop down through a jump-thru platform.</comment>
+        <event-block sid="885620915979455">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="180660113779385" type="Keyboard">
+                    <param id="0" name="Key">40 (Down arrow)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="12" name="Fall through" sid="548740897079339" type="Player" />
+            </actions>
+        </event-block>
+        <comment>Allow WASD as alternate controls to arrow keys.</comment>
+        <event-block sid="633314846835361">
+            <conditions>
+                <condition id="2" name="Key is down" sid="870835174047765" type="Keyboard">
+                    <param id="0" name="Key">87 (W)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="416313916738559" type="Player">
+                    <param id="0" name="Control">2</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="355666013619274">
+            <conditions>
+                <condition id="2" name="Key is down" sid="553534320208022" type="Keyboard">
+                    <param id="0" name="Key">65 (A)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="198825021977005" type="Player">
+                    <param id="0" name="Control">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="501339884475315">
+            <conditions>
+                <condition id="2" name="Key is down" sid="832631201800302" type="Keyboard">
+                    <param id="0" name="Key">83 (S)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="12" name="Fall through" sid="525039082911377" type="Player" />
+            </actions>
+        </event-block>
+        <event-block sid="435388143478791">
+            <conditions>
+                <condition id="2" name="Key is down" sid="881375776850879" type="Keyboard">
+                    <param id="0" name="Key">68 (D)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action behavior="Platform" id="7" name="Simulate control" sid="987750904541795" type="Player">
+                    <param id="0" name="Control">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>Mirror the player&apos;s image so they appear facing the right way when moving left or right.</comment>
+        <event-block any="1" sid="676941535742996">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="914990518089921" type="Keyboard">
+                    <param id="0" name="Key">37 (Left arrow)</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="495943303735626" type="Keyboard">
+                    <param id="0" name="Key">65 (A)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="999146969436884" type="Player">
+                    <param id="0" name="State">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block any="1" sid="688392486657353">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="897343319987252" type="Keyboard">
+                    <param id="0" name="Key">39 (Right arrow)</param>
+                </condition>
+                <condition id="0" name="On key pressed" sid="470491068018895" type="Keyboard">
+                    <param id="0" name="Key">68 (D)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Set mirrored" sid="712797769683279" type="Player">
+                    <param id="0" name="State">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <comment>If the player falls off the bottom of the layout, restart the level.</comment>
+        <event-block sid="240070789679389">
+            <conditions>
+                <condition id="-2" name="Compare Y" sid="223880786694980" type="Player">
+                    <param id="0" name="Comparison">4</param>
+                    <param id="1" name="Y co-ordinate">LayoutHeight</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-26" name="Restart layout" sid="173297618995292" type="System" />
+            </actions>
+        </event-block>
+        <event-block sid="988434760025500">
+            <conditions>
+                <condition id="0" name="On key pressed" sid="498323783272271" type="Keyboard">
+                    <param id="0" name="Key">70 (F)</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Spawn another object" sid="149304334708048" type="Player">
+                    <param id="0" name="Object">Sprite</param>
+                    <param id="1" name="Layer">&quot;Game&quot;</param>
+                    <param id="2" name="Image point">0</param>
+                </action>
+                <action behavior="Bullet" id="3" name="Set angle of motion" sid="461065978279539" type="Sprite">
+                    <param id="0" name="Angle">player.X</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="556534348578786" type="Sprite">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+                <action behavior="Pin" id="1" name="Unpin" sid="458410856749301" type="Sprite" />
+                <action id="-16" name="Wait" sid="885017347648562" type="System">
+                    <param id="0" name="Seconds">2</param>
+                </action>
+                <action id="-9" name="Destroy" sid="840029923091034" type="Sprite" />
+            </actions>
+        </event-block>
+        <event-block sid="788635472917235">
+            <conditions>
+                <condition id="-18" name="On created" sid="816304085871929" type="Sprite" />
+            </conditions>
+            <actions>
+                <action id="-16" name="Set opacity" sid="157593391894960" type="Sprite">
+                    <param id="0" name="Opacity">0</param>
+                </action>
+                <action behavior="Pin" id="0" name="Pin to object" sid="360880462440880" type="Sprite">
+                    <param id="0" name="Pin to">Player</param>
+                    <param id="1" name="Mode">0</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
